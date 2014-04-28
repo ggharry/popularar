@@ -84,11 +84,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Google Glass</th>
+                  <th>Google Glass (Most recent 100)</th>
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <% Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).limit(100).reverse.each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>
@@ -105,11 +105,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Oculus</th>
+                  <th>Oculus (Most recent 100)</th>
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <% Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).limit(100).reverse.each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>
@@ -126,11 +126,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Meta SpaceGlasses</th>
+                  <th>Meta SpaceGlasses (Most recent 100)</th>
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <% Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).limit(100).reverse.each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>

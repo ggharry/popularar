@@ -84,11 +84,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Sur-veillance</th>
+                  <th>Sur-veillance (Most recent 100)</th>
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <% Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).limit(100).reverse.each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>
@@ -105,11 +105,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Sous-veillance</th>
+                  <th>Sous-veillance (Most recent 100)</th>
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <% Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).limit(100).reverse.each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>

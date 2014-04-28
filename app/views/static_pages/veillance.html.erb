@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://getbootstrap.com/examples/dashboard/ -->
+<html lang="en"><script type="text/javascript" src="chrome-extension://kajfghlhfkcocafkcjlajldicbikpgnp/catcher.js"><!-- script injected by Request Maker --></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="http://www.clker.com/cliparts/4/4/4/T/k/W/no-camera-allowed-md.png">
+<title>Popular Veillance</title>
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+<style type="text/css"></style><style id="holderjs-style" type="text/css"></style></head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Popular AR</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><%= image_tag "http://www.clker.com/cliparts/4/4/4/T/k/W/no-camera-allowed-md.png", :size => "40x40", :style => "padding:5px; margin-top:5px;" %></li>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="/veillance">Veillance Popularity</a></li>
+          <li><a href="/glass">Digital Glasses Popularity</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Veillance Popularity</h1>
+        <h5>Popular Veillance is a place to compare to the popularity between sur-veillance and sous-veillance based on Tweets from Twitter.</h5>
+        <h8>Note: Popularity is defined as the state or condition of being liked, admired, or supported by many people, which, we assume, can be represented by Tweets.</h8>
+
+        <div class="row placeholders">
+          <div class="col-xs-12">
+            
+            <% if Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count != 0 %>
+            <h1><%= ratio = Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count / Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count %> : 1 </h1>
+            <% else %>
+            <h1><%= Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count %> : 0 </h1>
+            <% end %>
+            <h3>Sur-veillance is currently more popular</h3> 
+            <span class="text-muted">Sur-veillance : Sous-veillance (Ratio in the past 24 hours)</span>
+
+          </div>
+          
+        </div>
+
+        <div class="row placeholders">
+          <div class="col-xs-6">
+            
+            <h1><%= Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
+            <h4>Sur-veillance</h4>
+            <% if Tweet.where(:category => "surveillance").count != 0 %>
+            <span class="text-muted"><%= ((Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours </span>
+            <% end %>
+            <div class="text-muted"><%= link_to "What is Sur-veillance?", "http://en.wikipedia.org/wiki/Surveillance" %></div>
+          </div>
+          <div class="col-xs-6">
+            <h1><%= Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
+            <h4>Sous-veillance</h4>
+            <% if Tweet.where(:category => "sousveillance").count != 0 %>
+            <span class="text-muted"><%= ((Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours</span>
+            <% end %>
+            <div class="text-muted"><%= link_to "What is Sous-veillance?", "http://en.wikipedia.org/wiki/Sousveillance" %></div>
+          </div>
+          
+        </div>
+        <div class="table-responsive">
+          <div class="col-xs-6">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Sur-veillance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <tr>
+                  <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
+                    <br>
+                    <% if tweet.media_url != nil %>
+                    <center><%= image_tag tweet.media_url, :size => "250x250", :class => "img-responsive" %></center>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-6">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Sous-veillance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.each do |tweet| %>
+                <tr>
+                  <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
+                    <br>
+                    <% if tweet.media_url != nil %>
+                    <center><%= image_tag tweet.media_url, :size => "250x250", :class => "img-responsive" %></center>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="./Dashboard Template for Bootstrap_files/jquery.min.js"></script>
+  <script src="./Dashboard Template for Bootstrap_files/bootstrap.min.js"></script>
+  <script src="./Dashboard Template for Bootstrap_files/docs.min.js"></script>
+</body></html>

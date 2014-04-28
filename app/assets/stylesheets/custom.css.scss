@@ -1,0 +1,110 @@
+@import "bootstrap";
+
+$navy: rgb(55, 73, 94);
+
+$grey: rgb(247,247,247);
+
+.bio_date{
+	display:block;
+	font-size:25px;
+	padding-bottom:5px;
+}
+
+.experience{
+	color:$navy;
+  text-align:center;
+}
+
+.experience ul{
+	list-style-type: none;
+}
+
+.nav-list > li > a {
+	padding: 5px 0px;
+	font-size: 22px;
+	color: grey;
+}
+
+.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+	background-color: grey;
+}
+
+.navbar-fixed-top{
+	padding-top:10px;	
+	background-color:$grey;
+	height:32px;
+	opacity:0.95;
+}
+
+.navbar-fixed-top > a{
+	color: $navy;
+	font-weight:lighter;
+
+}
+
+.top_bar{
+   background-color:$navy;
+   height:300px;
+}
+
+.header_item{
+	padding-left:10px;
+	padding-right:10px;
+    font-size:25px;
+}
+
+.harrychen{
+   display:inline-block;
+   color:white;
+   font-weight:lighter; 
+   font-size:100px; 
+   text-align:center;
+   margin-top:110px;
+   line-height:100px;
+}
+
+#bio, #schedule, #product, #contact, #blog{
+	text-align:center;
+	font-size:50px;
+	padding-top: 40px;
+	font-weight:lighter; 
+	color: $navy;
+}
+
+.span_home{
+	width:600px;
+	margin-left:185px;
+	color:$navy;
+}
+
+.experience{
+	font-weight:lighter;
+	font-size: 19px;
+}
+
+.experience h1{
+	font-weight:lighter;
+	margin:0;
+	font-size:30px;
+	line-height:30px;
+}
+
+.media{
+	font-weight:lighter;
+	font-size: 19px;
+}
+
+.media h1{
+	font-weight:lighter;
+	margin:0;
+	font-size:30px;
+	line-height:40px;
+}
+
+p{
+	margin-bottom: 20px;
+}
+
+body{
+	background-color: $grey;
+}

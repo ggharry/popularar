@@ -89,7 +89,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.limit(100).each do |tweet| %>
+                <% Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.take(100).each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>
@@ -110,7 +110,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.limit(100).each do |tweet| %>
+                <% Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.take(100).each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>
@@ -131,7 +131,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.limit(100).each do |tweet| %>
+                <% Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).reverse.take(100).each do |tweet| %>
                 <tr>
                   <td><%= link_to tweet.content, "http://twitter.com/statuses/"+ tweet.tweet_id, :style => "width: 50%;" %>
                     <br>

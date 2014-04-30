@@ -70,7 +70,7 @@ ga('require', 'displayfeatures');
             
             <h1><%= Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
             <h4>Sur-veillance</h4>
-            <% if Tweet.where(:category => "surveillance").count != 0 %>
+            <% if Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count != 0 %>
             <span class="text-muted"><%= ((Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "surveillance").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours </span>
             <% end %>
             <div class="text-muted"><%= link_to "What is Sur-veillance?", "http://en.wikipedia.org/wiki/Surveillance" %></div>
@@ -78,7 +78,7 @@ ga('require', 'displayfeatures');
           <div class="col-xs-6">
             <h1><%= Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
             <h4>Sous-veillance</h4>
-            <% if Tweet.where(:category => "sousveillance").count != 0 %>
+            <% if Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count != 0 %>
             <span class="text-muted"><%= ((Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "sousveillance").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours</span>
             <% end %>
             <div class="text-muted"><%= link_to "What is Sous-veillance?", "http://en.wikipedia.org/wiki/Sousveillance" %></div>

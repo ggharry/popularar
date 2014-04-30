@@ -63,7 +63,7 @@ ga('send', 'pageview');
             
             <h1><%= Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
             <h4>Google Glass</h4>
-            <% if Tweet.where(:category => "google glass").count != 0 %>
+            <% if Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).count != 0 %>
             <span class="text-muted"><%= ((Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "google glass").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours </span>
             <% end %>
             <div class="text-muted"><%= link_to "What is Google Glass?", "http://www.google.com/glass/start/" %></div>
@@ -71,7 +71,7 @@ ga('send', 'pageview');
           <div class="col-xs-4">
             <h1><%= Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
             <h4>Oculus</h4>
-            <% if Tweet.where(:category => "oculus").count != 0 %>
+            <% if Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).count != 0 %>
             <span class="text-muted"><%= ((Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "oculus").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours</span>
             <% end %>
             <div class="text-muted"><%= link_to "What is Oculus?", "http://www.oculusvr.com/" %></div>
@@ -79,7 +79,7 @@ ga('send', 'pageview');
           <div class="col-xs-4">
             <h1><%= Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).count %> Tweets </h1>
             <h4>Meta Spaceglasses</h4>
-            <% if Tweet.where(:category => "spaceglasses").count != 0 %>
+            <% if Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).count != 0 %>
             <span class="text-muted"><%= ((Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).last.created_at - Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).order(:created_at).first.created_at)/Tweet.where(:category => "spaceglasses").where("created_at > ?", 24.hours.ago).count).round(2) %> seconds / tweet in the past 24 hours</span>
             <% end %>
             <div class="text-muted"><%= link_to "What is Meta Spaceglasses?", "https://www.spaceglasses.com/" %></div>

@@ -8,6 +8,10 @@ task :dyno_ping do
   end
 end
 
+task :clean_db do
+  Tweet.where("created_at < ?",24.hours.ago).delete_all
+end
+
 task :add_surveillance => :environment do
   require 'tweetstream'
 

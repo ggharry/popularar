@@ -29,6 +29,8 @@ gem 'newrelic_rpm'
 
 gem 'tweetstream'
 
+gem 'unicorn'
+
 group :development do
   gem 'rspec-rails'
 end
